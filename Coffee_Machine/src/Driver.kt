@@ -1,17 +1,43 @@
-fun bill(coffeeId:Int , coffeeType:Int){
-    when(coffeeId){
-        1 -> {
-            when(coffeeType){
-                
+class Bill(
+    var latteAmount: Int = 127,
+    var espressoAmount: Int = 38,
+    var cappucinoAmount: Int = 114,
+    var coldBrewAmount: Int = 226,
+    var coldRushAmount: Int = 241,
+    var coldVanillaCoffeeAmount: Int = 98
+
+){
+    fun calculateAmount(coffeeId:Int,type:Int):Int{
+        if(coffeeId==1){
+            if(type==1){
+                return latteAmount
+            }
+            else if(type==2){
+                return espressoAmount
+            }
+            else if(type==3){
+                return cappucinoAmount
             }
         }
-
-        2-> {
-            when(coffeeType){
-
+        else if(coffeeId==2){
+            if(type==1){
+                return coldBrewAmount
+            }
+            else if(type==2){
+                return coldRushAmount
+            }
+            else if(type==3){
+                return coldVanillaCoffeeAmount
             }
         }
+        return -1
     }
+
+}
+
+fun bill(coffeeId:Int , coffeeType:Int){
+    val obj=Bill()
+    println("Your bill total is : ${obj.calculateAmount(coffeeId,coffeeType)}")
 }
 
 fun hotCoffeeMenu(){
